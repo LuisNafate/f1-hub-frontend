@@ -1,0 +1,23 @@
+# heroku.yml — Despliegue del Frontend en Heroku (Container Registry)
+#
+# Flujo de despliegue:
+#   heroku stack:set container -a <nombre-app-frontend>
+#   git push heroku main
+#
+# Variables de entorno necesarias (configurar ANTES del primer push):
+#   heroku config:set NEXT_PUBLIC_API_BASE=https://<nombre-app-api>.herokuapp.com -a <nombre-app-frontend>
+#
+# IMPORTANTE: NEXT_PUBLIC_API_BASE se bake en el bundle de Next.js durante
+# el build. Heroku pasa automáticamente las config vars como Docker build args
+# cuando se declaran con ARG en el Dockerfile. Si cambias la URL del API,
+# debes hacer un nuevo deploy para que el cambio surta efecto.
+#
+# Nota: Heroku inyecta $PORT automáticamente en runtime. Next.js standalone
+# (server.js) lo lee desde process.env.PORT sin configuración adicional.
+
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: node server.js

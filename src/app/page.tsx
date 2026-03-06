@@ -27,8 +27,8 @@ export default function Home() {
         className="mb-10 max-w-md text-base leading-relaxed"
         style={{ color: 'var(--color-muted)' }}
       >
-        Explora el calendario de circuitos y todos los pilotos de la temporada
-        de Fórmula 1, con datos actualizados de la API OpenF1.
+        Explora el calendario y los pilotos de la temporada
+        de Fórmula 1, con datos casi actualizados de la API OpenF1, con sus limitantes.
       </p>
 
       {/* CTAs */}
