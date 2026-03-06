@@ -1,6 +1,7 @@
 import type { DriverRow, MeetingRow, TeamView } from '../types/f1';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:4000';
+// El browser llama al mismo origen; Next.js reescribe /api/f1/* al backend via BACKEND_URL
+const API_BASE = '';
 
 async function apiFetch<T>(path: string): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`);

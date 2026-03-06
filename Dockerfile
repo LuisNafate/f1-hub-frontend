@@ -23,11 +23,6 @@ COPY . .
 # NEXT_PUBLIC_API_BASE se bake en el build.
 # En Heroku, se lee desde heroku config:set NEXT_PUBLIC_API_BASE=<url>
 # Docker lo pasa automáticamente como ARG si existe en las config vars.
-ARG NEXT_PUBLIC_API_BASE=http://localhost:4000
-ENV NEXT_PUBLIC_API_BASE=$NEXT_PUBLIC_API_BASE
-ENV NEXT_TELEMETRY_DISABLED=1
-
-# Garantizar que el directorio public existe antes del build
 RUN mkdir -p public && npm run build
 
 # ── Stage 5: Production ───────────────────────────────────────────────────────
